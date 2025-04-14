@@ -26,7 +26,17 @@
 							"  });\r",
 							"\r",
 							"  const capturarValorJson = pm.response.json().token;\r",
-							"pm.globals.set(\"tokenAdmin\",capturarValorJson);\r",
+							"pm.globals.set(\"TOKENADM\",capturarValorJson);\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
 							""
 						],
 						"type": "text/javascript",
@@ -47,13 +57,9 @@
 					}
 				},
 				"url": {
-					"raw": "https://qualitys-hunters.qacoders.dev.br/api/login",
-					"protocol": "https",
+					"raw": "{{URL}}/api/login",
 					"host": [
-						"qualitys-hunters",
-						"qacoders",
-						"dev",
-						"br"
+						"{{URL}}"
 					],
 					"path": [
 						"api",
@@ -119,7 +125,7 @@
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "{{tokenAdmin}}",
+						"value": "{{TOKENADM}}",
 						"type": "text"
 					}
 				],
@@ -133,9 +139,9 @@
 					}
 				},
 				"url": {
-					"raw": "{{url}}/api/user",
+					"raw": "{{URL}}/api/user",
 					"host": [
-						"{{url}}"
+						"{{URL}}"
 					],
 					"path": [
 						"api",
@@ -152,18 +158,14 @@
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "{{tqa13TokenAdmin}}",
+						"value": "{{TOKENADM}}",
 						"type": "text"
 					}
 				],
 				"url": {
-					"raw": "https://qualitys-hunters.qacoders.dev.br/api/user/",
-					"protocol": "https",
+					"raw": "{{URL}}/api/user/",
 					"host": [
-						"qualitys-hunters",
-						"qacoders",
-						"dev",
-						"br"
+						"{{URL}}"
 					],
 					"path": [
 						"api",
@@ -201,6 +203,13 @@
 						"type": "text/javascript",
 						"packages": {}
 					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"packages": {},
+						"type": "text/javascript"
+					}
 				}
 			],
 			"request": {
@@ -216,9 +225,9 @@
 					}
 				},
 				"url": {
-					"raw": "{{url}}/api/login",
+					"raw": "{{URL}}/api/login",
 					"host": [
-						"{{url}}"
+						"{{URL}}"
 					],
 					"path": [
 						"api",
