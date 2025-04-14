@@ -1,0 +1,51 @@
+{
+	"id": "745e8718-9e0b-48e9-8e1f-c94e314dc144",
+	"values": [
+		{
+			"key": "servidor",
+			"value": "http://localhost:8089/api",
+			"type": "default",
+			"enabled": false
+		},
+		{
+			"key": "token-cgir",
+			"value": "",
+			"type": "default",
+			"enabled": false
+		},
+		{
+			"key": "tokenAdmin",
+			"value": "",
+			"type": "secret",
+			"enabled": true
+		},
+		{
+			"key": "url",
+			"value": "https://qualitys-hunters.qacoders.dev.br",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "tqa",
+			"value": "",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "tokenUser",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Nzk4MzcxZmUyNzAzMzNhOWEwMzhmNWEiLCJmdWxsTmFtZSI6IlJvZHJpZ28gUmFtb3MiLCJtYWlsIjoicm9kcmlnb0B0ZXN0LmNvbS5iciIsInBhc3N3b3JkIjoiJDJiJDEwJHFFUHJsRS44VzVWREE0d0ZyR2FQby5id0NUTFRBUURjOUI5RlNGSGliLjRPblN6QXprd1ZxIiwiYWNjZXNzUHJvZmlsZSI6IkFETUlOIiwiY3BmIjoiMzMzMDQ3MjMzNDQiLCJzdGF0dXMiOmZhbHNlLCJhdWRpdCI6W3sidXBkYXRlZEJ5Ijp7InVzZXJJZCI6IjY3OTgzNzFmZTI3MDMzM2E5YTAzOGY1YSIsInVzZXJMb2dpbiI6InJvZHJpZ29AdGVzdC5jb20uYnIifSwidXBkYXRlRGF0ZSI6InPDoWJhZG8sIDAxLzAyLzIwMjUsIDIxOjU1OjE1IEJSVCIsIl9pZCI6IjY3OWVjMjczYzNhYTM5YWNlMjQyMGFlZiJ9XSwiX192IjowLCJpYXQiOjE3Mzg2MjQ1MjgsImV4cCI6MTczODcxMDkyOH0.pfp6b3If7JDF963LFWwlKmT97JfgnkEdN6K4klRSjYU",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "tqa13TokenAdmin",
+			"value": "",
+			"type": "any",
+			"enabled": true
+		}
+	],
+	"name": "Globals",
+	"_postman_variable_scope": "globals",
+	"_postman_exported_at": "2025-04-14T22:12:52.502Z",
+	"_postman_exported_using": "Postman/11.40.4"
+}
