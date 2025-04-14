@@ -1,0 +1,74 @@
+# Este é um fluxo de trabalho básico para ajudá-lo a começar com Actions
+
+name: teste
+
+# Controla quando a ação será executada.
+on:
+  # Aciona o fluxo de trabalho em eventos de push ou pull request, mas somente para o branch principal
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+  # Permite que você execute esse fluxo de trabalho manualmente na guia Actions
+  workflow_dispatch:
+
+# Uma execução de fluxo de trabalho é composta por um ou mais jobs que podem ser executados sequencialmente ou em paralelo
+jobs:
+  # Este fluxo de trabalho contém um único job chamado "build"
+  API-Tests-Postman-Collection:
+    # O tipo de runner em que o job será executado
+    runs-on: ubuntu-latest
+    
+    # Permissões e Ambiente para disponibilizar o Reporte de Testes no GitHub Pages
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+
+    environment:
+      name: github-pages
+      url: https://Rapha3la.github.io/ron-bugado-academy12.2-api-postman/report.html
+
+    # As etapas representam uma sequência de tarefas que serão executadas como parte do job
+    steps:
+      - name: Etapa 1 - Clonar Repositório do Projeto para a Máquina Virtual do GitHub Actions
+        uses: actions/checkout@v4
+
+      
+      - name: Etapa 2 - Verificar versão do Newman e do Node
+        run: |
+          newman --version
+          node --version
+          
+      
+      - name: Etapa 3 - Instalar Newman-Reporter-Htmlextra
+        run: sudo npm install -g newman-reporter-htmlextra
+        
+      
+      - name: Etapa 4 - Executar Coleção do Postman
+        run: newman run ./ronbugado-collecition-ci.json -e ./ronbugado-environments-ci.json --reporters cli, -r htmlextra --reporter-htmlextra-export ./results/report.html
+   
+      # Executa um conjunto de comandos usando o shell do runner
+      - name: Etapa 5 - Salvar Relatórios dos Testes Executados
+        uses: actions/upload-artifact@v4  # Atualizado para a versão v4
+        if: always()
+        with:
+          name: teste-report
+          path: ./results/report.html
+
+          
+      # Publica o report de testes no GitHub Pages
+      - name: Etapa 6 - Configurar GitHub Pages para Hospedagem dos Relatórios
+        uses: actions/configure-pages@v5
+
+      - name: Etapa 7 - Fazer Upload dos Relatórios Gerados
+        uses: actions/upload-pages-artifact@v3
+        if: always()
+        with:
+          path: results/
+          
+      - name: Etapa 8 - Publicar Relatórios de Testes no GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4 
+        
