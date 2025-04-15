@@ -13,7 +13,7 @@
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.globals.set(\"tqa13TokenAdmin\", pm.response.json().token);\r",
+							"pm.environment.set(\"TOKENADM\", pm.response.json().token);\r",
 							"\r",
 							"pm.test(\"Status test\", function () { pm.response.to.have.status(200)});\r",
 							"\r",
@@ -26,7 +26,7 @@
 							"  });\r",
 							"\r",
 							"  const capturarValorJson = pm.response.json().token;\r",
-							"pm.globals.set(\"TOKENADM\",capturarValorJson);\r",
+							"pm.environment.set(\"TOKENADM\",capturarValorJson);\r",
 							""
 						],
 						"type": "text/javascript",
@@ -50,6 +50,127 @@
 				"body": {
 					"mode": "raw",
 					"raw": "{\r\n  \"mail\": \"sysadmin@qacoders.com\",\r\n  \"password\": \"1234@Test\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}/api/login",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"api",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Listar usuário",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{TOKENADM}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{URL}}/api/user/",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"api",
+						"user",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Criar usuário",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{URL}}/api/user",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"api",
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login usuário",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Renamed variable to a unique name\r",
+							"const capturarValorJsonToken = pm.response.json().token;\r",
+							"pm.environment.set(\"TOKENUSUARIO\", capturarValorJsonToken);\r",
+							"\r",
+							"pm.test(\"Status test\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check if token exist\", function () {\r",
+							"   pm.expect(pm.response.json().token).to.exist;\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Sucess message validation\", function () {\r",
+							"    pm.expect(pm.response.json().msg).to.include(\"autenticação autorizada com sucesso!\");\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"mail\": \"{{mail}}\",\r\n  \"password\": \"{{password}}\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
