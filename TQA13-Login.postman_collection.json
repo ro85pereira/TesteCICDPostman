@@ -150,6 +150,30 @@
 							"}\r",
 							"pm.environment.set(\"cpf\", randomCPF());\r",
 							"\r",
+							"function generatePassword() {\r",
+							"    const chars = \"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@#$%\";\r",
+							"    const comprimentoMinimo = 8;\r",
+							"    const comprimentoMaximo = 12;\r",
+							"    let senhaArray = [];\r",
+							" \r",
+							"    senhaArray.push(chars[Math.floor(Math.random() * 26)]); \r",
+							"    senhaArray.push(chars[26 + Math.floor(Math.random() * 26)]); \r",
+							"    senhaArray.push(chars[52 + Math.floor(Math.random() * 10)]); \r",
+							"    senhaArray.push(chars[62 + Math.floor(Math.random() * 4)]); \r",
+							"    \r",
+							"    const comprimentoRestante = Math.max(comprimentoMinimo - senhaArray.length, comprimentoMaximo - senhaArray.length);\r",
+							"    \r",
+							"    for (let i = 0; i < comprimentoRestante; i++) {\r",
+							"        senhaArray.push(chars[Math.floor(Math.random() * chars.length)]);\r",
+							"    }\r",
+							"    return shuffleString(senhaArray.join(\"\"));\r",
+							"}\r",
+							"\r",
+							"function shuffleString(string) {\r",
+							"  return string.split(\"\").sort(() => Math.random() - 0.5).join(\"\");\r",
+							"}\r",
+							"pm.environment.set(\"password\", generatePassword());\r",
+							"\r",
 							"\r",
 							"\r",
 							" "
@@ -197,6 +221,70 @@
 					"path": [
 						"api",
 						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login usuário",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Renamed variable to a unique name\r",
+							"const capturarValorJsonToken = pm.response.json().token;\r",
+							"pm.environment.set(\"TOKENUSUARIO\", capturarValorJsonToken);\r",
+							"\r",
+							"pm.test(\"Status test\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check if token exist\", function () {\r",
+							"   pm.expect(pm.response.json().token).to.exist;\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Sucess message validation\", function () {\r",
+							"    pm.expect(pm.response.json().msg).to.include(\"autenticação autorizada com sucesso!\");\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"mail\": \"{{mail}}\",\r\n  \"password\": \"{{password}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}/api/login",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"api",
+						"login"
 					]
 				}
 			},
