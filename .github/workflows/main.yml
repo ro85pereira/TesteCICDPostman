@@ -47,7 +47,7 @@ jobs:
         
       
       - name: Etapa 4 - Executar Coleção do Postman
-        run: newman run ./TQA13-Login.postman_collection.json -e ./TQA13.postman_environment.json --reporters cli, -r htmlextra --reporter-htmlextra-export ./results/report.html
+        run: newman run ./TQA13-Login.postman_collection.json -e ./TQA13-Empresa.postman_collection.JSON -e ./TQA13.postman_environment.json --reporters cli, -r htmlextra --reporter-htmlextra-export ./results/report.html
    
       # Executa um conjunto de comandos usando o shell do runner
       - name: Etapa 5 - Salvar Relatórios dos Testes Executados
