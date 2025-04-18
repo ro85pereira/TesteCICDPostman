@@ -45,18 +45,9 @@ jobs:
       - name: Etapa 3 - Instalar Newman-Reporter-Htmlextra
         run: sudo npm install -g newman-reporter-htmlextra
         
+      - name: Etapa 4 - Executar Coleção do Postman
+        run: newman run ./TQA13-QualityHunters.postman_collecition.json -e ./TQA13.postman_environments.json --reporters cli, -r htmlextra --reporter-htmlextra-export ./results/report.html
       
-      - name: Etapa 4 - Executar Coleção de Empresa do Postman e Log da Requisição/Resposta
-        run: |
-          echo "--- Executando a requisição de Criar Empresa ---"
-          newman run ./TQA13-QualityHunters.postman_collection.json -e ./TQA13-Empresa.postman_collection.JSON -e ./TQA13.postman_environment.json --reporters cli
-          echo "--- Detalhes da Requisição e Resposta (em caso de falha) ---"
-          newman run ./TQA13-QualityHunters.postman_collection.json -e ./TQA13-Empresa.postman_collection.JSON -e ./TQA13.postman_environment.json -r json --reporter-json-export detailed_report.json || true
-          if [ -f detailed_report.json ]; then
-            cat detailed_report.json | jq '.results[].item[?(.name == "Empresa")].item[?(.name == "Criar empresa")].request | to_json'
-            echo "--- Corpo da Resposta (em caso de falha) ---"
-            cat detailed_report.json | jq '.results[].item[?(.name == "Empresa")].item[?(.name == "Criar empresa")].response[].body'
-          fi
       # Executa um conjunto de comandos usando o shell do runner
       - name: Etapa 5 - Salvar Relatórios dos Testes Executados
         uses: actions/upload-artifact@v4  # Atualizado para a versão v4
