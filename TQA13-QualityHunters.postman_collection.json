@@ -1315,6 +1315,83 @@
 			"name": "Empresa",
 			"item": [
 				{
+					"name": "Criar empresa",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"function randomCNPJ() {\r",
+									"    let randomCNPJ = '';\r",
+									"   \r",
+									"    for (let i = 0; i < 14; i++) {\r",
+									"        randomCNPJ += Math.floor(Math.random() * 10).toString();\r",
+									"    }\r",
+									"    return randomCNPJ;\r",
+									"}\r",
+									"pm.environment.set(\"registerCompany\", randomCNPJ());\r",
+									"\r",
+									"function randomCorporateName(){\r",
+									"    const names = ['Peixes Arts','Ilha Peixes','Nina Veterinario','Nina Dogs','Nina dog','Cats Toys','Nina Festas','Compra sim','Company Nino','Ilha Company','Nina Arts','Ilha Loja','Nina Sassa','Compra Dogs','Dog Show','Cats Dogss','Nina Eletro','Compra Compra','Company Vendas','Dudu Company','Dudu Sasssa','Compras On','Salazar Company','IlhaRetiro Company','Lele Eletro','Compra Aki'];\r",
+									"    const randomName = names[Math.floor(Math.random()*names.length)]\r",
+									"    return randomName;\r",
+									"}\r",
+									"pm.environment.set(\"corporateName\",randomCorporateName());"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"mensagem de status\",function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});\r",
+									"pm.test(\"Json's body validation\", function(){\r",
+									"    const responseJson = pm.response.json();\r",
+									"    pm.expect(Object.keys(responseJson)).to.not.be.empty;\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{TOKENADM}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"corporateName\":\"{{corporateName}}\",\r\n  \"registerCompany\":\"{{registerCompany}}\",\r\n  \"mail\":\"{{mail}}\",\r\n  \"matriz\":\"{{matriz}}\",\r\n  \"responsibleContact\":\"{{responsibleContact}}\",\r\n  \"telephone\":\"{{telephone}}\",\r\n  \"serviceDescription\":\"{{serviceDescription}}\",\r\n  \"address\": [\r\n    {\r\n      \"zipCode\":\"{{zipCode}}\",\r\n      \"city\":\"{{city}}\",\r\n      \"state\":\"{{state}}\",\r\n      \"district\":\"{{district}}\",\r\n      \"street\":\"{{street}}\",\r\n      \"number\":\"{{number}}\",\r\n      \"complement\":\"{{complement}}\",\r\n      \"country\":\"{{country}}\"\r\n    }\r\n  ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/company",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"company"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "Login Admin",
 					"event": [
 						{
@@ -1372,82 +1449,6 @@
 							"path": [
 								"api",
 								"login"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Criar empresa manualmente",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"exec": [
-									"function randomCNPJ() {\r",
-									"    let randomCNPJ = '';\r",
-									"   \r",
-									"    for (let i = 0; i < 14; i++) {\r",
-									"        randomCNPJ += Math.floor(Math.random() * 10).toString();\r",
-									"    }\r",
-									"    return randomCNPJ;\r",
-									"}\r",
-									"pm.environment.set(\"registerCompany\", randomCNPJ());\r",
-									"\r",
-									"function randomCorporateName(){\r",
-									"    const names = ['Peixes Arts','Ilha Peixes','Nina Veterinario','Nina Dogs','Nina dog','Cats Toys','Nina Festas','Compra sim','Company Nino','Ilha Company','Nina Arts','Ilha Loja','Nina Sassa','Compra Dogs','Dog Show','Cats Dogss','Nina Eletro','Compra Compra','Company Vendas','Dudu Company','Dudu Sasssa','Compras On','Salazar Company','IlhaRetiro Company','Lele Eletro','Compra Aki'];\r",
-									"    const randomName = names[Math.floor(Math.random()*names.length)]\r",
-									"    return randomName;\r",
-									"}\r",
-									"pm.environment.set(\"corporateName\",randomCorporateName());"
-								],
-								"type": "text/javascript",
-								"packages": {}
-							}
-						},
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Json's body validation\", function(){\r",
-									"    const responseJson = pm.response.json();\r",
-									"    pm.expect(Object.keys(responseJson)).to.not.be.empty;\r",
-									"});\r",
-									"pm.test(\"Status code\", function () {\r",
-									"    pm.response.to.have.status(201);\r",
-									"});"
-								],
-								"type": "text/javascript",
-								"packages": {}
-							}
-						}
-					],
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "{{TOKENADM}}",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n  \"corporateName\":\"Teste Final QA\",\r\n  \"registerCompany\":\"76317510481383\",\r\n  \"mail\":\"testew@f.com\",\r\n  \"matriz\":\"SP\",\r\n  \"responsibleContact\":\"Dudu Belmonte\",\r\n  \"telephone\":\"111111111111113\",\r\n  \"serviceDescription\":\"Teste\",\r\n  \"address\": [\r\n    {\r\n      \"zipCode\":\"04253000\",\r\n      \"city\":\"Caetano\",\r\n      \"state\":\"SP\",\r\n      \"district\":\"Sp\",\r\n      \"street\":\"Dom Pedro\",\r\n      \"number\":\"14\",\r\n      \"complement\":\"apartamento\",\r\n      \"country\":\"Brasil\"\r\n    }\r\n  ]\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{URL}}/api/company",
-							"host": [
-								"{{URL}}"
-							],
-							"path": [
-								"api",
-								"company"
 							]
 						}
 					},
