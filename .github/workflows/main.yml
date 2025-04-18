@@ -48,10 +48,7 @@ jobs:
       
       - name: Etapa 4 - Executar Coleção do Postman
         run: newman run ./TQA13-Login.postman_collection.json -e ./TQA13.postman_environment.json --reporters cli, -r htmlextra --reporter-htmlextra-export ./results/report.html
-      
-      - name: Etapa 4.1 - Executar Coleção de Empresa do Postman
-        run: newman run ./TQA13-Empresa.postman_collection.json -e ./TQA13.postman_environment.json -e ./workspace.postman_globals.json --reporters cli, -r htmlextra --reporter-htmlextra-export ./results/empresa_report.html
-   
+
       # Executa um conjunto de comandos usando o shell do runner
       - name: Etapa 5 - Salvar Relatórios dos Testes Executados
         uses: actions/upload-artifact@v4  # Atualizado para a versão v4
@@ -59,7 +56,6 @@ jobs:
         with:
           name: teste-report
           path: ./results/report.html
-
           
       # Publica o report de testes no GitHub Pages
       - name: Etapa 6 - Configurar GitHub Pages para Hospedagem dos Relatórios
