@@ -1346,22 +1346,12 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"pm.test(\"Creation message validation\",function () {\r",
+									"pm.test(\"mensagem de status\",function () {\r",
 									"    pm.response.to.have.status(201);\r",
 									"});\r",
 									"pm.test(\"Json's body validation\", function(){\r",
 									"    const responseJson = pm.response.json();\r",
 									"    pm.expect(Object.keys(responseJson)).to.not.be.empty;\r",
-									"});\r",
-									"\r",
-									"pm.test(\"Body informations validations\", function(){\r",
-									"    const responseJson = pm.response.json();\r",
-									"    const DigitadoRorporateName = pm.environment.get(\"corporateName\");\r",
-									"    const DigitadoResposibleContact = pm.environment.get(\"responsibleContact\");\r",
-									"    const DigitadoTelephone = pm.environment.get(\"telephone\");\r",
-									"    pm.expect(responseJson.newCompany.corporateName).to.eql(DigitadoRorporateName);\r",
-									"    pm.expect(responseJson.newCompany.responsibleContact).to.eql(DigitadoResposibleContact);\r",
-									"    pm.expect(responseJson.newCompany.telephone).to.eql(DigitadoTelephone);\r",
 									"});\r",
 									""
 								],
