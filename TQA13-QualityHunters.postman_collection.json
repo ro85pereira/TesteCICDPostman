@@ -1371,7 +1371,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"corporateName\":\"Teste do teste\",\r\n  \"registerCompany\":\"{{registerCompany}}\",\r\n  \"mail\":\"{{mail}}\",\r\n  \"matriz\":\"{{matriz}}\",\r\n  \"responsibleContact\":\"{{responsibleContact}}\",\r\n  \"telephone\":\"{{telephone}}\",\r\n  \"serviceDescription\":\"{{serviceDescription}}\",\r\n  \"address\": [\r\n    {\r\n      \"zipCode\":\"{{zipCode}}\",\r\n      \"city\":\"{{city}}\",\r\n      \"state\":\"{{state}}\",\r\n      \"district\":\"{{district}}\",\r\n      \"street\":\"{{street}}\",\r\n      \"number\":\"{{number}}\",\r\n      \"complement\":\"{{complement}}\",\r\n      \"country\":\"{{country}}\"\r\n    }\r\n  ]\r\n}",
+							"raw": "{\r\n  \"corporateName\":\"Teste Final QA\",\r\n  \"registerCompany\":\"96317510481373\",\r\n  \"mail\":\"testew@f.com\",\r\n  \"matriz\":\"SP\",\r\n  \"responsibleContact\":\"Dudu Belmonte\",\r\n  \"telephone\":\"111111111111113\",\r\n  \"serviceDescription\":\"Teste\",\r\n  \"address\": [\r\n    {\r\n      \"zipCode\":\"04253000\",\r\n      \"city\":\"Caetano\",\r\n      \"state\":\"Sp\",\r\n      \"district\":\"Sp\",\r\n      \"street\":\"Dom Pedro\",\r\n      \"number\":\"14\",\r\n      \"complement\":\"apartamento\",\r\n      \"country\":\"Brasil\"\r\n    }\r\n  ]\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
