@@ -333,7 +333,7 @@
 							"pm.environment.set(\"fullname\",randomUserName());\r",
 							"\r",
 							"function randomUserEmail(){\r",
-							"    const email = ['sala@hotmail.com.br','reti@bol.com.br','quebs@ponto.com.br','boab@boa.com.br','sasa@gmail.com','dudu_online@ji.com.br','sa@ig.com.br'];\r",
+							"    const email = ['sa@hotmail.com.br','re@bol.com.br','qu@ponto.com.br','bb@boa.com.br','sasa2@gmail.com','dudu_onlinE2@ji.com.br','sa@ig.com.br','sala@hotmail.com.br','reti@bol.com.br','quebs@ponto.com.br','boab@boa.com.br','sasa@gmail.com','dudu_online@ji.com.br','sa@ig.com.br'];\r",
 							"    const randomEmail = email[Math.floor(Math.random()*email.length)]\r",
 							"    return randomEmail;\r",
 							"}\r",
@@ -363,9 +363,9 @@
 					}
 				},
 				"url": {
-					"raw": "{{url}}/api/user/6798371fe270333a9a038f5a",
+					"raw": "{{URL}}/api/user/6798371fe270333a9a038f5a",
 					"host": [
-						"{{url}}"
+						"{{URL}}"
 					],
 					"path": [
 						"api",
@@ -449,9 +449,9 @@
 					}
 				},
 				"url": {
-					"raw": "{{url}}/api/user/password/6798371fe270333a9a038f5a",
+					"raw": "{{URL}}/api/user/password/6798371fe270333a9a038f5a",
 					"host": [
-						"{{url}}"
+						"{{URL}}"
 					],
 					"path": [
 						"api",
@@ -503,9 +503,9 @@
 					}
 				},
 				"url": {
-					"raw": "{{url}}/api/user/status/6798371fe270333a9a038f5a",
+					"raw": "{{URL}}/api/user/status/6798371fe270333a9a038f5a",
 					"host": [
-						"{{url}}"
+						"{{URL}}"
 					],
 					"path": [
 						"api",
@@ -543,7 +543,7 @@
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "{{tokenUser}}",
+						"value": "{{TOKENUSUARIO}}",
 						"type": "text"
 					}
 				],
@@ -557,9 +557,9 @@
 					}
 				},
 				"url": {
-					"raw": "{{url}}/api/user/password/6798371fe270333a9a038f5a",
+					"raw": "{{URL}}/api/user/password/6798371fe270333a9a038f5a",
 					"host": [
-						"{{url}}"
+						"{{URL}}"
 					],
 					"path": [
 						"api",
@@ -596,7 +596,7 @@
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "{{tokenUser}}",
+						"value": "{{TOKENUSUARIO}}",
 						"type": "text"
 					}
 				],
@@ -610,9 +610,9 @@
 					}
 				},
 				"url": {
-					"raw": "{{url}}/api/user/password/6798371fe270333a9a038f5a",
+					"raw": "{{URL}}/api/user/password/6798371fe270333a9a038f5a",
 					"host": [
-						"{{url}}"
+						"{{URL}}"
 					],
 					"path": [
 						"api",
