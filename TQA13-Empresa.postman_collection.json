@@ -1,0 +1,260 @@
+{
+	"info": {
+		"_postman_id": "b849c3e6-1eff-4b94-b691-6a67ef38e358",
+		"name": "TQA13-Empresa",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "38100241"
+	},
+	"item": [
+		{
+			"name": "Listar empresas",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status validation\", function(){\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{TOKENADM}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{URL}}/api/company",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"api",
+						"company"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Contagem de empresas",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status validation\",function(){\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Cheking if response body is not empty\", function(){\r",
+							"    const responseJson = pm.response.json();\r",
+							"    pm.expect(Object.keys(responseJson)).to.not.be.empty;\r",
+							"})\r",
+							"pm.test(\"Response Time validation less than to 2 seconds that means 2000 ms\", function (){\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+							"})\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{TOKENADM}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{URL}}/api/company/count",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"api",
+						"company",
+						"count"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Editar Status",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Message validation\", function (){\r",
+							"    pm.expect(pm.response.json().msg).to.be.eql(\"Status da companhia atualizado com sucesso.\")\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{TOKENADM}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"status\": false\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}/api/company/status/679d5193c3aa39ace24200bf",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"api",
+						"company",
+						"status",
+						"679d5193c3aa39ace24200bf"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Validar tempo de resposta menor que 2 segundos Copy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status validation\",function(){\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"const empresas = (pm.response.json().count);\r",
+							"console.log(empresas);\r",
+							"\r",
+							"if (empresas < 1000){\r",
+							"    pm.test(\"Response Time validation less than to 2 seconds\", function (){\r",
+							"        pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+							"    });\r",
+							"};\r",
+							"\r",
+							"\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{TOKENADM}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{URL}}/api/company/count",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"api",
+						"company",
+						"count"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Contagem de empresas Copy",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{tokenAdmin}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/company/count",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"company",
+								"count"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "nginx/1.18.0 (Ubuntu)"
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 15 Feb 2025 01:09:13 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "12"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"c-JZoBu1MIT3lEFR/m1bBm1d/+6jU\""
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"count\": 78\n}"
+				}
+			]
+		}
+	]
+}
