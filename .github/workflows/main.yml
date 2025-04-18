@@ -44,19 +44,10 @@ jobs:
       
       - name: Etapa 3 - Instalar Newman-Reporter-Htmlextra
         run: sudo npm install -g newman-reporter-htmlextra
-      
         
       - name: Etapa 4 - Executar Coleção do Postman
-        run: newman run ./TQA13-QualityHunters.postman_collection.json -e ./TQA13.postman_environment.json --reporters cli, -r htmlextra --reporter-htmlextra-export ./results/report.html
-      - name: Etapa 4.1
-        run: |
-          echo "TOKENADM: ${{ env.TOKENADM }}"
-          echo "corporateName: ${{ env.corporateName }}"
-          echo "registerCompany: ${{ env.registerCompany }}"
-          echo "mail: ${{ env.mail }}"
-          echo "address: ${{ env.address }}" # Se você estiver usando uma variável para o endereço
-          # Imprima outras variáveis relevantes
-          
+        run: newman run ./TQA13-QualityHunters.postman_collection.json -e ./TQA13.postman_environment.json --reporters cli, -r htmlextra --reporter-htmlextra-export ./results/report.html --verbose
+      
       # Executa um conjunto de comandos usando o shell do runner
       - name: Etapa 5 - Salvar Relatórios dos Testes Executados
         uses: actions/upload-artifact@v4  # Atualizado para a versão v4
