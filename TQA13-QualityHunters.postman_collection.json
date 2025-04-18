@@ -1321,7 +1321,6 @@
 							"listen": "prerequest",
 							"script": {
 								"exec": [
-									"// Criar CNPJ randonicamente\r",
 									"function randomCNPJ() {\r",
 									"    let randomCNPJ = '';\r",
 									"   \r",
@@ -1333,7 +1332,7 @@
 									"pm.environment.set(\"registerCompany\", randomCNPJ());\r",
 									"\r",
 									"function randomCorporateName(){\r",
-									"    const names = ['Peixes Arts','Ilha Peixes','Nina Veterinario','Nina Dogs','Nina dog','Cats Toys','Nina Festas','Compra sim','Company Nino','Ilha Company','Nina Arts','Ilha Loja','Nina Sassa','Compra Dogs','Dog Show','Cats and Dogs','Nina Eletro','Compra Compra','Company KO','Ilha do Dudu Company','Dudu e Sassa','Compra Com nois','Salazar Company KO','Ilha do Retiro Company','Lele Eletro','Compra Aki ponto com'];\r",
+									"    const names = ['Peixes Arts','Ilha Peixes','Nina Veterinario','Nina Dogs','Nina dog','Cats Toys','Nina Festas','Compra sim','Company Nino','Ilha Company','Nina Arts','Ilha Loja','Nina Sassa','Compra Dogs','Dog Show','Cats Dogss','Nina Eletro','Compra Compra','Company Vendas','Dudu Company','Dudu Sasssa','Compras On','Salazar Company','IlhaRetiro Company','Lele Eletro','Compra Aki'];\r",
 									"    const randomName = names[Math.floor(Math.random()*names.length)]\r",
 									"    return randomName;\r",
 									"}\r",
