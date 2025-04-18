@@ -630,6 +630,124 @@
 			"response": []
 		},
 		{
+			"name": "Não realizar login sem email",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Renamed variable to a unique name\r",
+							"const capturarValorJsonToken = pm.response.json().token;\r",
+							"pm.environment.set(\"TOKENUSUARIO\", capturarValorJsonToken);\r",
+							"\r",
+							"pm.test(\"Status test\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Message validation\", function(){\r",
+							"    pm.expect(pm.response.json().mail).to.eql(\"O campo e-mail é obrigatório.\");\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"mail\": \"\",\r\n  \"password\": \"{{password}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}/api/login",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"api",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Não realizar login sem senha",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Renamed variable to a unique name\r",
+							"const capturarValorJsonToken = pm.response.json().token;\r",
+							"pm.environment.set(\"TOKENUSUARIO\", capturarValorJsonToken);\r",
+							"\r",
+							"pm.test(\"Status test\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Message validation\", function(){\r",
+							"    pm.expect(pm.response.json().password).to.eql(\"O campo senha é obrigatório.\");\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"mail\": \"{{mail}}\",\r\n  \"password\": \"\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}/api/login",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"api",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "Criar usuário com sucesso",
 			"event": [
 				{
