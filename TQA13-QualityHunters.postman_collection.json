@@ -1371,7 +1371,7 @@
 									"pm.environment.set(\"telephone\", randomTelephone());\r",
 									"\r",
 									"function randomService() {\r",
-									"    const names = ['Textil', 'Transportes', 'Manutenção', 'Contas', 'Vendas', 'Administrativo'];\r",
+									"    const names = ['Textil', 'Transportes', 'Manutencao', 'Contas', 'Vendas', 'Administrativo'];\r",
 									"    const randomName = names[Math.floor(Math.random() * names.length)];\r",
 									"    return randomName;\r",
 									"}\r",
