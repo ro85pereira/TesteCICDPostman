@@ -1397,7 +1397,7 @@
 									"pm.environment.set(\"number\", randomNumberForAddress());\r",
 									"\r",
 									"function randomCountry() {\r",
-									"    const names = ['Brasil', 'Argentina', 'Canadá', 'Japão', 'Austrália', 'Alemanha', 'Índia', 'Egito', 'México', 'França', 'China', 'África do Sul', 'Itália', 'Estados Unidos', 'Espanha'];\r",
+									"    const names = ['Brasil', 'Argentina', 'Canadá', 'Japão', 'Austrália', 'Alemanha', 'Índia', 'Egito', 'México', 'França', 'China', 'Itália', 'Espanha'];\r",
 									"    const randomName = names[Math.floor(Math.random() * names.length)];\r",
 									"    return randomName;\r",
 									"}\r",
