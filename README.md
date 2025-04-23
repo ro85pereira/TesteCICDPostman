@@ -43,12 +43,16 @@ Antes de executar os testes, certifique-se de que você tem os seguintes requisi
 
 👥 Squad
 Quality Hunters
+
 👩‍💻 Tech Lead
 Cleberson Osório
 Nara Cyntia
+
 👑 Líder
 Raphaela Teada
+
 👨‍💻 Equipe
+
 Andreza Menezes Veloso Pipolo 
 Beatriz Ferreira Franco
 Fernanda Ferreira dos Santos
